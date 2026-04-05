@@ -3,26 +3,28 @@ const config = require("../config");
 function request(path, options = {}) {
   const { method = "GET", data, header } = options;
 
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: `${config.baseUrl}${path}`,
-      method,
-      data,
-      header,
-      success: (res) => {
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          resolve(res.data);
-          return;
-        }
+  return wx.cloud.callContainer({
+    config: {
+      env: config.envId
+    },
+    path,
+    method,
+    header: {
+      "X-WX-SERVICE": config.service,
+      ...header
+    },
+    data
+  }).then((res) => {
+    if (res.errMsg === "cloud.callContainer:ok") {
+      return res.data;
+    }
 
-        reject(new Error(`Request failed: ${res.statusCode}`));
-      },
-      fail: reject
-    });
+    throw new Error(res.errMsg || "请求失败");
   });
 }
 
 module.exports = {
   request,
-  baseUrl: config.baseUrl
+  envId: config.envId,
+  service: config.service
 };

@@ -1,8 +1,9 @@
-const { request, baseUrl } = require("../../utils/request");
+const { request, envId, service } = require("../../utils/request");
 
 Page({
   data: {
-    baseUrl,
+    envId,
+    service,
     loading: false,
     result: null,
     resultText: "",
