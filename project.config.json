@@ -1,0 +1,21 @@
+{
+  "description": "Minimal WeChat Mini Program with Cloud Hosting backend",
+  "packOptions": {
+    "ignore": []
+  },
+  "miniprogramRoot": "miniprogram/",
+  "compileType": "miniprogram",
+  "libVersion": "trial",
+  "appid": "wx8e2f19a4db909592",
+  "projectname": "wechat-v2-demo",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true
+  },
+  "condition": {}
+}

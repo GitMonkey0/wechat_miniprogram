@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="card">
+    <view class="title">微信小程序 + 微信云托管</view>
+    <view class="desc">最小联调示例，页面加载后会请求后端健康检查接口。</view>
+    <view class="label">当前后端地址</view>
+    <view class="value">{{baseUrl}}</view>
+
+    <button class="button" type="primary" loading="{{loading}}" bindtap="checkBackend">
+      {{loading ? '请求中...' : '检查后端'}}
+    </button>
+  </view>
+
+  <view wx:if="{{result}}" class="card success">
+    <view class="label">接口返回</view>
+    <view class="json">{{resultText}}</view>
+  </view>
+
+  <view wx:if="{{error}}" class="card error">
+    <view class="label">错误信息</view>
+    <view class="value">{{error}}</view>
+  </view>
+</view>
