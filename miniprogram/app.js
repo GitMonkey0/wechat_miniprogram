@@ -1,3 +1,5 @@
+const config = require("./config");
+
 App({
   onLaunch() {
     if (!wx.cloud) {
@@ -5,9 +7,14 @@ App({
       return;
     }
 
-    wx.cloud.init({
-      env: "prod-9gu5ao5ce86ae652"
+    const cloud = new wx.cloud.Cloud({
+      resourceAppid: config.resourceAppid,
+      resourceEnv: config.envId
     });
+
+    cloud.init();
+
+    this.cloud = cloud;
   },
 
   globalData: {}

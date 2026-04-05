@@ -1,7 +1,13 @@
-const { request, envId, service } = require("../../utils/request");
+const {
+  request,
+  resourceAppid,
+  envId,
+  service
+} = require("../../utils/request");
 
 Page({
   data: {
+    resourceAppid,
     envId,
     service,
     loading: false,

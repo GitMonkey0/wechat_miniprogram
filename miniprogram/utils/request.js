@@ -2,8 +2,13 @@ const config = require("../config");
 
 function request(path, options = {}) {
   const { method = "GET", data, header } = options;
+  const app = getApp();
 
-  return wx.cloud.callContainer({
+  if (!app.cloud) {
+    return Promise.reject(new Error("云能力未初始化"));
+  }
+
+  return app.cloud.callContainer({
     config: {
       env: config.envId
     },
@@ -25,6 +30,7 @@ function request(path, options = {}) {
 
 module.exports = {
   request,
+  resourceAppid: config.resourceAppid,
   envId: config.envId,
   service: config.service
 };

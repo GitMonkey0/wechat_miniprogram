@@ -2,6 +2,8 @@
   <view class="card">
     <view class="title">微信小程序 + 微信云托管</view>
     <view class="desc">最小联调示例，页面加载后会通过云托管容器调用请求后端健康检查接口。</view>
+    <view class="label">资源方 AppID</view>
+    <view class="value">{{resourceAppid}}</view>
     <view class="label">环境 ID</view>
     <view class="value">{{envId}}</view>
     <view class="label">服务名</view>
